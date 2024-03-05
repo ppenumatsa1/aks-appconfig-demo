@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspnetapp-demo
+  labels:
+    app: aspnetapp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aspnetapp-demo
+  template:
+    metadata:
+      labels:
+        app: aspnetapp-demo
+    spec:
+      containers:
+      - name: aspnetapp
+        image: acrdemo0304.azurecr.io/aspnetapp:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
