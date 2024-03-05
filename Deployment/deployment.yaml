@@ -20,3 +20,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+      volumes:
+      - name: config-volume 
+        configMap: 
+          name: configmap-created-by-appconfig-provider
