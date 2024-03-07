@@ -20,6 +20,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        env:
+        - name: DOTNET_USE_POLLING_FILE_WATCHER
+          value: "true"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config

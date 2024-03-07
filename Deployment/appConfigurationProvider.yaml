@@ -3,10 +3,20 @@ kind: AzureAppConfigurationProvider
 metadata:
   name: appconfigurationprovider-sample
 spec:
-  connectionStringReference: app-config
+  endpoint: https://appconfig-demo-0304.azconfig.io 
+  configuration:
+    refresh:
+      enabled: true
+      interval: 5s
+      monitoring:
+        keyValues:
+          - key: app1_sentinel
   target:
     configMapName: configmap-created-by-appconfig-provider
     configMapData: 
       type: json
       key: mysettings.json
+  auth:
+    workloadIdentity:
+      managedIdentityClientId: f98b6a82-7052-4a41-8e87-7f3b281b475d
   
